@@ -14,11 +14,29 @@ $send = curl('http://localhost/praktek%20rekayasa%20web/praktek-2/getWisata.php'
 // mengubah json menjadi array
 $data = json_decode($send, TRUE);
 
-foreach ($data as $row) {
-  echo $row['id_wisata'].'<br/>';
-  echo $row['kota'].'<br/>';
-  echo $row['landmark'].'<br/>';
-  echo $row['tarif'].'<br/>';
-  echo '<hr/>';
-}
+// foreach ($data as $row) {
+// echo $row['id_wisata'].'<br/>';
+//   echo $row['kota'].'<br/>';
+//   echo $row['landmark'].'<br/>';
+//   echo $row['tarif'].'<br/>';
+//   echo '<hr/>';
+// }
 ?>
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Kota</th>
+      <th>Landmark</th>
+      <th>Tarif</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($data as $row): ?>
+      <tr>
+        <td><?= $row['kota']; ?></td>
+        <td><?= $row['landmark']; ?></td>
+        <td><?= $row['tarif']; ?></td>
+      </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
